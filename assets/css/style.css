@@ -36,7 +36,7 @@ main {
     flex-direction: column;
 }
 
-main div {
+#question-body {
     margin-left: 170px;
     margin-right: 170px;
     display: flex;
@@ -44,23 +44,31 @@ main div {
     align-items: flex-start;
 }
 
-main h2 {
+#question-body h2 {
     font-size: 50px;
     text-align: left;
 }
 
-main ul {
+#question-body ul {
     padding: 0%;
     list-style-type: none;
 }
 
-main li {
+#question-body li {
     padding: 10px;
     border-radius: 10px;
     background-color: lightblue;
     margin-bottom: 5px;
 }
 
-main a {
+#question-body a {
     font-size: 30px;
+}
+
+#quiz-finish {
+    display: none;
+}
+
+#high-scores {
+    display: none;
 }
