@@ -1,0 +1,172 @@
+{
+    "quiz": [
+        {
+            "question": "Inside which HTML element do we put the JavaScript?",
+            "choices": [
+                "<script>",
+                "<js>",
+                "<javascript>",
+                "<scripting>"
+            ]
+        },
+        {
+            "question": "What is the correct JavaScript syntax to change the content of this HTML element? <p id=\"demo\">This is a demonstration.</p>",
+            "choices": [
+                "document.getElementById(\"demo\").innerHTML = \"Hello World!\";",
+                "#demo.innerHTML = \"Hello World!\";",
+                "document.getElement(\"p\").innerHTML = \"Hello World!\";",
+                "document.getElementByName(\"p\").innerHTML = \"Hello World!\";"
+            ]
+        },
+        {
+            "question": "Correct place to insert a Javascript?",
+            "choices": [
+                "Both the <head> section and the <body> section",
+                "The <body> section",
+                "The <head> section"
+            ]
+        },
+        {
+            "question": "What is the correct syntax for referring to an external script called \"app.js\"?",
+            "choices": [
+                "<script src=\"app.js\">",
+                "<script name=\"app.js\">",
+                "<script href=\"app.js\">"
+            ]
+        },
+        {
+            "question": "The external JavaScript file must contain the <script> tag.",
+            "choices": [
+                "False",
+                "True"
+            ]
+        },
+        {
+            "question": "How do you write \"Hello World\" in an alert box?",
+            "choices": [
+                "alert(\"Hello World\");",
+                "alertBox(\"Hello World\");",
+                "msg(\"Hello World\");",
+                "msgBox(\"Hello World\");"
+            ]
+        },
+        {
+            "question": "How do you create a function in JavaScript?",
+            "choices": [
+                "function myFunction()",
+                "function:myFunction()",
+                "function = myFunction()"
+            ]
+        },
+        {
+            "question": "How do you call a function named \"myFunction\"?",
+            "choices": [
+                "myFunction()",
+                "call myFunction()",
+                "call function myFunction()"
+            ]
+        },
+        {
+            "question": "How to write an IF statement in JavaScript?",
+            "choices": [
+                "if (i===5)",
+                "if i = 5 then",
+                "if i = 5",
+                "if i === 5 then"
+            ]
+        },
+        {
+            "question" : "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?",
+            "choices": [
+                "if (i !== 5)",
+                "if i =! 5 then",
+                "if (i <> 5)",
+                "if i <> 5"
+            ]
+        },
+        {
+            "question": "How does a WHILE loop start?",
+            "choices": [
+                "while (i <= 10)",
+                "while (i <= 10; i++)",
+                "while i = 1 to 10"
+            ]
+        },
+        {
+            "question": "How does a FOR loop start?",
+            "choices": [
+                "for (i = 0; i <= 5; i++)",
+                "for (i <= 5; i++)",
+                "for (i = 0; i <= 5)",
+                "for i = 1 to 5"
+            ]
+        },
+        {
+            "question": "How can you add a comment in a JavaScript?",
+            "choices": [
+                "//This is a comment",
+                "<!--This is a comment-->",
+                "'This is a comment"
+            ]
+        },
+        {
+            "question": "How to insert a comment that has more than one line?",
+            "choices": [
+                "/*This comment has\nmore than one line*/",
+                "//This comment has\nmore than one line//",
+                "<!--This comment has\nmore than one line-->"
+            ]
+        },
+        {
+            "question": "What is the correct way to write a JavaScript array?",
+            "choices": [
+                "var colors = [\"red\", \"green\", \"blue\"]",
+                "var colors = \"red\", \"green\", \"blue\"",
+                "var colors = (1:\"red\", 2:\"green\", 3:\"blue\")",
+                "var colors = 1 = (\"red\"), 2 = (\"green\"), 3 = (\"blue\")"
+            ]
+        },
+        {
+            "question": "JavaScript is the same as Java.",
+            "choices": [
+                "False",
+                "True"
+            ]
+        },
+        {
+            "question": "Which event occurs when the user clicks on an HTML element?",
+            "choices": [
+                "onclick",
+                "onchange",
+                "onmouseover",
+                "onmouseclick"
+            ]
+        },
+        {
+            "question": "How do you declare a JavaScript variable?",
+            "choices": [
+                "var carName;",
+                "v carName;",
+                "variable carName;"
+            ]
+        },
+        {
+            "question": "Which operator is used to assign a value to a variable?",
+            "choices": [
+                "=",
+                "*",
+                "-",
+                "%"
+            ]
+        },
+        {
+            "question": "What will the following code return: Boolean(10 > 9)",
+            "choices": [
+                "true",
+                "false",
+                "undefined",
+                "NaN"
+            ]
+        }
+    ]
+}
