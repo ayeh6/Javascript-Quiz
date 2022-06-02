@@ -50,6 +50,7 @@ header {
 
 header a {
     cursor: pointer;
+    color: rgb(14, 133, 173);
 }
 
 main {

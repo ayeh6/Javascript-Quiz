@@ -17,6 +17,7 @@ let startScreen = $(`#start-screen`);
 let questionScreen = $(`#question-body`);
 let quizFinishScreen = $(`#quiz-finish`);
 let highScoreScreen = $(`#high-scores`)
+let headerElement = $(`#top-bar`);
 
 let questionElement = $(`#question`);
 let choicesContainer = $(`#choices`);
@@ -29,8 +30,14 @@ let scoresContainer = $(`#scores-list`);
 let goBackButton = $(`#go-back`);
 let clearScoresButton = $(`#clear-scores`);
 
+let viewHighScoresAnchor = $(`#high-score-link`);
+
 function storeScore() {
     initials = initialsInputField.val();
+    if(initials === ``) {
+        alert(`Please enter your initials`);
+        return;
+    }
     highScores = JSON.parse(localStorage.getItem("highScores"));
     if(highScores != null) {
         highScores.push(`${initials} - ${score}`);
@@ -43,6 +50,7 @@ function storeScore() {
 }
 
 function showHighScores() {
+    headerElement.css({'display': 'none'});
     highScores = JSON.parse(localStorage.getItem("highScores"));    //grab high scores from local storage
     scoresContainer.empty();
     if(highScores != null) {    //if the list is not null
@@ -64,6 +72,7 @@ function clearScores() {
 
 function goBack() {
     timerElement.text(`Time: 100`);
+    headerElement.css({'display': 'flex'});
     startScreen.css({'display': 'flex'});
     questionScreen.css({'display': 'none'});
     quizFinishScreen.css({'display': 'none'});
@@ -141,6 +150,9 @@ choicesContainer.on(`click`, function(event) {  //question choices listener
             secondsLeft = 0;
         }
         timerElement.text(`Time: ${secondsLeft}`);
+        if(secondsLeft === 0) {
+            endQuiz();
+        }
     }
     quizDataIndex++;
     if(quizDataIndex < quizData.length) {
@@ -149,6 +161,14 @@ choicesContainer.on(`click`, function(event) {  //question choices listener
     else {
         endQuiz();
     }
+});
+
+viewHighScoresAnchor.on(`click`, function() {
+    clearInterval(timerInterval);
+    startScreen.css({'display': 'none'});
+    questionScreen.css({'display': 'none'});
+    quizFinishScreen.css({'display': 'none'});
+    showHighScores();
 });
 
 startButton.on(`click`, startQuiz);   //start button listener
