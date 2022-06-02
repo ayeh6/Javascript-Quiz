@@ -17,8 +17,28 @@ h6 {
     margin: 0;
 }
 
-p {
+h2 {
+    font-size: 50px;
+}
+
+p,
+a,
+li,
+button {
     margin: 0;
+    font-size: 30px;
+}
+
+button {
+    border: none;
+    background: none;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+input {
+    font-size: 20px;
 }
 
 header {
@@ -36,39 +56,97 @@ main {
     flex-direction: column;
 }
 
+#start-screen {
+    margin-left: 150px;
+    margin-right: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#start-screen h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#start-screen p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 #question-body {
-    margin-left: 170px;
-    margin-right: 170px;
+    margin-left: 150px;
+    margin-right: 150px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 #question-body h2 {
-    font-size: 50px;
     text-align: left;
 }
 
 #question-body ul {
+    margin-top: 30px;
     padding: 0%;
     list-style-type: none;
 }
 
-#question-body li {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: lightblue;
+#question-body button {
+    width: 100%;
+    text-align: left;
     margin-bottom: 5px;
 }
 
-#question-body a {
-    font-size: 30px;
+#quiz-finish {
+    display: flex;
+    flex-direction: column;
 }
 
-#quiz-finish {
-    display: none;
+#quiz-finish h2 {
+    margin-bottom: 10px;
+}
+
+#quiz-finish p {
+    margin-top: 5px;
+}
+
+#initial-input {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+#initial-input input {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#initial-input button {
+    font-size: 20px;
 }
 
 #high-scores {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#high-scores ul {
+    padding: 0%;
+    list-style-type: none;
+    width: 100%;
+}
+
+#high-scores li {
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+}
+
+#high-scores a {
+    font-size: 20px;
+    padding: 5px;
+    background-color: lightblue;
+    border-radius: 10px;
 }
