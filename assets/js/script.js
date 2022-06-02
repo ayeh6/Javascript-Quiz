@@ -2,6 +2,7 @@ let quizData;
 let correctAnswer = ``;
 let questionDisplayed = ``;
 let quizDataIndex = 0;
+let quizRandomIndices;
 
 let initials;
 let highScores;
@@ -31,6 +32,14 @@ let goBackButton = $(`#go-back`);
 let clearScoresButton = $(`#clear-scores`);
 
 let viewHighScoresAnchor = $(`#high-score-link`);
+
+function randomizeQuestions() {
+    quizRandomIndices = [];
+    for(let i=0; i<quizData.length; i++) {  //initialize list of indices from 0 to quizData.length-1
+        quizRandomIndices.push(i);
+    }
+    quizRandomIndices = quizRandomIndices.sort(() => Math.random() - 0.5);  //randomize the array
+}
 
 function storeScore() {
     initials = initialsInputField.val();    //takes value of initials input
@@ -104,6 +113,7 @@ function startQuiz() {
         startScreen.css({'display': 'none'});       //clear the start screen
         questionScreen.css({'display': 'flex'});    //show the question screen
         secondsLeft = 100;  //initialize timer
+        randomizeQuestions();
         setTime();  //start timer
         displayQuestions(); //show question
     });
@@ -121,8 +131,8 @@ function endQuiz() {
 }
 
 function displayQuestions() {
-    questionDisplayed = quizData[quizDataIndex].question;   //grab question from current index
-    let choicesArray = quizData[quizDataIndex].choices;     //grab choices for current question
+    questionDisplayed = quizData[quizRandomIndices[quizDataIndex]].question;   //grab question from current index
+    let choicesArray = quizData[quizRandomIndices[quizDataIndex]].choices;     //grab choices for current question
     correctAnswer = choicesArray[0];                        //grab correct answer
 
     let choicesRandomIndices = [];  //create an array from 0 to length-1 of choices
