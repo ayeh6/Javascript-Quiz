@@ -33,61 +33,62 @@ let clearScoresButton = $(`#clear-scores`);
 let viewHighScoresAnchor = $(`#high-score-link`);
 
 function storeScore() {
-    initials = initialsInputField.val();
-    if(initials === ``) {
+    initials = initialsInputField.val();    //takes value of initials input
+    if(initials === ``) {   //if empty give an alert
         alert(`Please enter your initials`);
         return;
     }
-    highScores = JSON.parse(localStorage.getItem("highScores"));
-    if(highScores != null) {
+
+    highScores = JSON.parse(localStorage.getItem("highScores"));    //grab scores from local storage
+    if(highScores != null) {    //if not null, store score in `initials - score` format
         highScores.push(`${initials} - ${score}`);
     }
-    else {
+    else {  //if local storage is null, create new array and store score in format
         highScores = [`${initials} - ${score}`];
     }
-    localStorage.setItem("highScores", JSON.stringify(highScores));
-    showHighScores();
+
+    localStorage.setItem("highScores", JSON.stringify(highScores)); //store the scores into storage
+    quizFinishScreen.css({'display': 'none'});  //clear the screen
+    showHighScores();   //view the high scores
 }
 
 function showHighScores() {
-    headerElement.css({'display': 'none'});
     highScores = JSON.parse(localStorage.getItem("highScores"));    //grab high scores from local storage
-    scoresContainer.empty();
+    scoresContainer.empty();    //empty current list on screen
     if(highScores != null) {    //if the list is not null
         for(let i=0; i<highScores.length; i++) {    //for each score, make a li and set text to the score, then append to ul
             let scoreListItem = $(`<li>`);
             scoreListItem.text(`${i+1}. ${highScores[i]}`);
             scoresContainer.append(scoreListItem);
         }
-    }
-    quizFinishScreen.css({'display': 'none'});
-    highScoreScreen.css({'display': 'flex'});
+    }   //else does nothing
+
+    headerElement.css({'display': 'none'}); //hide header element
+    highScoreScreen.css({'display': 'flex'});   //display high score screen
 }
 
 function clearScores() {
-    console.log("CLEAR");
-    localStorage.clear();
-    showHighScores();
+    localStorage.clear();   //clear local storage
+    showHighScores();   //re-render scores onto screen
 }
 
 function goBack() {
-    timerElement.text(`Time: 100`);
-    headerElement.css({'display': 'flex'});
-    startScreen.css({'display': 'flex'});
-    questionScreen.css({'display': 'none'});
-    quizFinishScreen.css({'display': 'none'});
-    highScoreScreen.css({'display': 'none'});
+    highScoreScreen.css({'display': 'none'});   //hide scores screen
+    timerElement.text(`Time: 100`); //reset timer element
+    headerElement.css({'display': 'flex'}); //show header element
+    startScreen.css({'display': 'flex'});   //show start screen
 }
 
 function setTime() {
-    timerInterval = setInterval(function() {
-        secondsLeft--;
-        if(secondsLeft < 0) {
+    timerInterval = setInterval(function() {    //set timer
+        secondsLeft--;  //decrement timer
+        if(secondsLeft < 0) {   //if timer is negative, set to 0
             secondsLeft = 0;
         }
-        timerElement.text(`Time: ${secondsLeft}`);
+        timerElement.text(`Time: ${secondsLeft}`);  //display current time
+
         if(secondsLeft <= 0) {  //if time is up
-            endQuiz();
+            endQuiz();  //end the quiz
         }
     }, 1000);
 }
@@ -109,13 +110,13 @@ function startQuiz() {
 }
 
 function endQuiz() {
-    clearInterval(timerInterval);
-    if(secondsLeft < 0) {
+    clearInterval(timerInterval);   //clear any current timers
+    if(secondsLeft < 0) {   //if negative, set to 0
         secondsLeft = 0;
     }
-    score = secondsLeft;
-    finalScoreElement.text(`Final score: ${score}`);
-    questionScreen.css({'display': 'none'});    //changes screen
+    score = secondsLeft;    //set score to time left
+    finalScoreElement.text(`Final score: ${score}`);    //sets text of final score
+    questionScreen.css({'display': 'none'});    //change screen
     quizFinishScreen.css({'display': 'flex'});
 }
 
@@ -149,26 +150,26 @@ choicesContainer.on(`click`, function(event) {  //question choices listener
         if(secondsLeft < 0) {   //if timer is less than 0, set to 0
             secondsLeft = 0;
         }
-        timerElement.text(`Time: ${secondsLeft}`);
-        if(secondsLeft === 0) {
+        timerElement.text(`Time: ${secondsLeft}`);  //display time after penalty
+        if(secondsLeft <= 0) { //if time 0 or less, end quiz
             endQuiz();
         }
     }
-    quizDataIndex++;
-    if(quizDataIndex < quizData.length) {
+    quizDataIndex++;    //go to next question
+    if(quizDataIndex < quizData.length) {   //if not end of questions list, display question
         displayQuestions();
     }
-    else {
+    else {  //else end quiz
         endQuiz();
     }
 });
 
-viewHighScoresAnchor.on(`click`, function() {
-    clearInterval(timerInterval);
-    startScreen.css({'display': 'none'});
+viewHighScoresAnchor.on(`click`, function() {   //view high scores listener
+    clearInterval(timerInterval);   //clear timer if there is one active
+    startScreen.css({'display': 'none'});   //set every display to none
     questionScreen.css({'display': 'none'});
     quizFinishScreen.css({'display': 'none'});
-    showHighScores();
+    showHighScores();   //view high scores
 });
 
 startButton.on(`click`, startQuiz);   //start button listener
