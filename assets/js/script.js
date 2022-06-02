@@ -25,7 +25,7 @@ function startQuiz() {
     });
 }
 
-function displayQuestions() {   //display questions, marks correct one with a certain attribute, randomize choices
+function displayQuestions() {
     questionDisplayed = quizData[quizDataIndex].question;   //grab question from current index
     let choicesArray = quizData[quizDataIndex].choices;     //grab choices for current question
     correctAnswer = choicesArray[0];                        //grab correct answer
@@ -54,7 +54,13 @@ choicesContainer.on(`click`, function(event) {  //question choices listener
     if(element.textContent === correctAnswer) {
         console.log('CORRECT');
         quizDataIndex++;
-        displayQuestions();
+        if(quizDataIndex < quizData.length) {
+            displayQuestions();
+        }
+        else {
+            questionScreen.css({'display': 'none'});
+            quizFinishScreen.css({'display': 'flex'});
+        }
     }
 });
 
