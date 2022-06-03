@@ -64,7 +64,9 @@ What I learned building this application is how to create a dynamic site using t
 
 Other than that, it was a lot of Javascript logic to have the page functional. Multiple functions and listeners, also utilized jQuery to clear and append elements easily. I even created a way to randomize the choices and questions using an array that is initially in order, then randomize using the sort function along with the Math random function.
 
-As for storing into local storage, it was just a null check if there are no scores stored, and using jQuery to clear and reappend elements onto the list on screen.
+As for storing into local storage, it was just a null check if there are no scores stored, and using jQuery to clear and re-append elements onto the list on screen.
+
+Lastly, for the questions I manually created a json file that has different questions with choices within each question, first choice being the correct one.
 
 ### Continued development
 
