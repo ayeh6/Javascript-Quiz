@@ -33,6 +33,17 @@ let clearScoresButton = $(`#clear-scores`);
 
 let viewHighScoresAnchor = $(`#high-score-link`);
 
+let rightWrongResponseElement = $(`#right-wrong-response`);
+
+function answerResponse(answer) {
+    if(rightWrongResponseElement.is(':animated')) {
+        rightWrongResponseElement.stop().animate({opacity:'100'});
+    }
+    rightWrongResponseElement.text(answer);
+    rightWrongResponseElement.css({'display': 'block'});
+    rightWrongResponseElement.fadeOut(600);
+}
+
 function randomizeQuestions() {
     quizRandomIndices = [];
     for(let i=0; i<quizData.length; i++) {  //initialize list of indices from 0 to quizData.length-1
@@ -125,6 +136,7 @@ function endQuiz() {
         secondsLeft = 0;
     }
     score = secondsLeft;    //set score to time left
+    initialsInputField.val('');
     finalScoreElement.text(`Final score: ${score}`);    //sets text of final score
     questionScreen.css({'display': 'none'});    //change screen
     quizFinishScreen.css({'display': 'flex'});
@@ -161,9 +173,13 @@ choicesContainer.on(`click`, function(event) {  //question choices listener
             secondsLeft = 0;
         }
         timerElement.text(`Time: ${secondsLeft}`);  //display time after penalty
+        answerResponse(`Incorrect`);
         if(secondsLeft <= 0) { //if time 0 or less, end quiz
             endQuiz();
         }
+    }
+    else {
+        answerResponse(`Correct!`);
     }
     quizDataIndex++;    //go to next question
     if(quizDataIndex < quizData.length) {   //if not end of questions list, display question
@@ -184,5 +200,10 @@ viewHighScoresAnchor.on(`click`, function() {   //view high scores listener
 
 startButton.on(`click`, startQuiz);   //start button listener
 submitInitialsButton.on(`click`, storeScore);   //submit initials button listener
+initialsInputField.on(`keypress`, function(event) {
+    if(event.which === 13) {
+        storeScore();
+    }
+});
 clearScoresButton.on(`click`, clearScores); //clear scores button listener
 goBackButton.on(`click`, goBack);   //go back button listener
