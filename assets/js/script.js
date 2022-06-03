@@ -36,12 +36,12 @@ let viewHighScoresAnchor = $(`#high-score-link`);
 let rightWrongResponseElement = $(`#right-wrong-response`);
 
 function answerResponse(answer) {
-    if(rightWrongResponseElement.is(':animated')) {
+    if(rightWrongResponseElement.is(':animated')) { //if still fading out, stop
         rightWrongResponseElement.stop().animate({opacity:'100'});
     }
-    rightWrongResponseElement.text(answer);
-    rightWrongResponseElement.css({'display': 'block'});
-    rightWrongResponseElement.fadeOut(600);
+    rightWrongResponseElement.text(answer); //set text
+    rightWrongResponseElement.css({'display': 'block'});    //display element
+    rightWrongResponseElement.fadeOut(600); //fade out
 }
 
 function randomizeQuestions() {
@@ -201,7 +201,7 @@ viewHighScoresAnchor.on(`click`, function() {   //view high scores listener
 startButton.on(`click`, startQuiz);   //start button listener
 submitInitialsButton.on(`click`, storeScore);   //submit initials button listener
 initialsInputField.on(`keypress`, function(event) {
-    if(event.which === 13) {
+    if(event.which === 13) {    //if enter is pressed, storeScore()
         storeScore();
     }
 });
