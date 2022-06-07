@@ -1,4 +1,4 @@
-# Project Name - Javascript Quiz
+# Javascript Quiz
 ## Table of contents
 
 - [Overview](#overview)
