@@ -1,5 +1,4 @@
-# Project Name - change to the name of your project
-
+# Project Name - Javascript Quiz
 ## Table of contents
 
 - [Overview](#overview)
@@ -79,4 +78,4 @@ As for continued development, I would like to have more questions added to the q
 ## Author
 
 - Website - [Andrew Yeh](https://ayeh6.github.io/Yeh-Andrew-Portfolio-Website/)
-- LinkedIn - [ayeh6](https://www.linkedin.com/in/ayeh6/)
+- LinkedIn - [/in/ayeh6](https://www.linkedin.com/in/ayeh6/)
